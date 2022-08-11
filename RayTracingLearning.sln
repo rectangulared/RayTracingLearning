@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RayTracingLearning", "RayTracingLearning\RayTracingLearning.vcxproj", "{C5C931AE-6A04-40B6-8C01-442855243C79}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C5C931AE-6A04-40B6-8C01-442855243C79}.Debug|x64.ActiveCfg = Debug|x64
+		{C5C931AE-6A04-40B6-8C01-442855243C79}.Debug|x64.Build.0 = Debug|x64
+		{C5C931AE-6A04-40B6-8C01-442855243C79}.Debug|x86.ActiveCfg = Debug|Win32
+		{C5C931AE-6A04-40B6-8C01-442855243C79}.Debug|x86.Build.0 = Debug|Win32
+		{C5C931AE-6A04-40B6-8C01-442855243C79}.Release|x64.ActiveCfg = Release|x64
+		{C5C931AE-6A04-40B6-8C01-442855243C79}.Release|x64.Build.0 = Release|x64
+		{C5C931AE-6A04-40B6-8C01-442855243C79}.Release|x86.ActiveCfg = Release|Win32
+		{C5C931AE-6A04-40B6-8C01-442855243C79}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {489D97FA-2CFC-4777-ABCD-CDDA9BD5B7FF}
+	EndGlobalSection
+EndGlobal
