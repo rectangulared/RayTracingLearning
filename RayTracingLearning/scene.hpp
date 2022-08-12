@@ -6,6 +6,7 @@
 #include "hittableList.hpp"
 
 #include <iostream>
+#include <ppl.h>
 
 
 class scene {

@@ -9,7 +9,7 @@
 #include "scene.hpp"
 #include "sphere.hpp"
 
-void random_spheres(scene& randScene) {
+void randomSpheres(scene& randScene) {
     randScene.imageWidth = 1200;
     randScene.aspectRatio = 16.0 / 9.0;
     randScene.samplesPerPixel = 100;
@@ -74,7 +74,7 @@ void random_spheres(scene& randScene) {
 
 
 int main() {
-    scene scene_desc;
-    random_spheres(scene_desc);
-    scene_desc.render();
+    scene randScene;
+    randomSpheres(randScene);
+    randScene.render();
 }
