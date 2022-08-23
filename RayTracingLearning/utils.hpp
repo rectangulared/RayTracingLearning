@@ -7,19 +7,19 @@
 
 // Constants
 
-const double infinity = std::numeric_limits<double>::infinity();
-const double pi = 3.1415926535897932385;
+constexpr double infinity = std::numeric_limits<double>::infinity();
+constexpr double pi = 3.1415926535897932385;
 
 // Utility Functions
-
-inline double degreesToRadians(double degrees) { return degrees * pi / 180.0; }
+template<typename T>
+T degreesToRadians(T degrees) { return degrees * pi / 180.0; }
 
 //Random valuse from 0.0 to 1.0
-inline double randomDouble() { return rand() / (RAND_MAX + 1.0); }
+template<typename T>
+T randomNumber() { return rand() / (RAND_MAX + 1.0); }
 
-inline double randomDouble(double min, double max) { return min + (max - min) * randomDouble(); }
-
-inline int randomInt(int min, int max) { return static_cast<int>(randomDouble(min, max + 1.0)); }
+template<typename T>
+T randomNumber(T min, T max) { return min + (max - min) * randomNumber<T>(); }
 
 // Common Headers
 

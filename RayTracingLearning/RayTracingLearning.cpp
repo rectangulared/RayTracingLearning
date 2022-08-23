@@ -9,7 +9,8 @@
 #include "scene.hpp"
 #include "sphere.hpp"
 
-void randomSpheres(scene& randScene) {
+void randomSpheres(scene& randScene) 
+{
     randScene.imageWidth = 1200;
     randScene.aspectRatio = 16.0 / 9.0;
     randScene.samplesPerPixel = 100;
@@ -17,9 +18,9 @@ void randomSpheres(scene& randScene) {
     randScene.cam.vFOV = 20;
     randScene.cam.focusDist = 10.0;
     randScene.cam.aperture = 0.1;
-    randScene.cam._origin = vec3(-13.0, 2.0, 3.0);
-    randScene.cam._lookAt = vec3(0.0, 0.0, 0.0);
-    randScene.cam._vUp = vec3(0.0, 1.0, 0.0);
+    randScene.cam._origin = vec3<double>(-13.0, 2.0, 3.0);
+    randScene.cam._lookAt = vec3<double>(0.0, 0.0, 0.0);
+    randScene.cam._vUp = vec3<double>(0.0, 1.0, 0.0);
 
     hittableList& world = randScene.world;
 
@@ -30,8 +31,8 @@ void randomSpheres(scene& randScene) {
     {
         for (int b = -11; b < 11; b++) 
         {
-            auto chooseMat = randomDouble();
-            point3 center(a + 0.9 * randomDouble(), 0.2, b + 0.9 * randomDouble());
+            auto chooseMat = randomNumber<double>();
+            point3 center(a + 0.9 * randomNumber<double>(), 0.2, b + 0.9 * randomNumber<double>());
 
             if ((center - point3(4.0, 0.2, 0.0)).length() > 0.9) 
             {
@@ -40,15 +41,15 @@ void randomSpheres(scene& randScene) {
                 if (chooseMat < 0.8) 
                 {
                     // diffuse
-                    auto albedo = vec3::random() * vec3::random();
+                    auto albedo = vec3<double>::random() * vec3<double>::random();
                     sphereMaterial = std::make_shared<lambertian>(albedo);
                     world.add(std::make_shared<sphere>(center, 0.2, sphereMaterial));
                 }
                 else if (chooseMat < 0.95) 
                 {
                     // metal
-                    auto albedo = vec3::random(0.5, 1);
-                    auto fuzz = randomDouble(0.0, 0.5);
+                    auto albedo = vec3<double>::random(0.5, 1);
+                    auto fuzz = randomNumber(0.0, 0.5);
                     sphereMaterial = std::make_shared<metal>(albedo, fuzz);
                     world.add(std::make_shared<sphere>(center, 0.2, sphereMaterial));
                 }
@@ -73,7 +74,8 @@ void randomSpheres(scene& randScene) {
 }
 
 
-int main() {
+int main() 
+{
     scene randScene;
     randomSpheres(randScene);
     randScene.render();

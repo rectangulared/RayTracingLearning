@@ -11,7 +11,7 @@ public:
 
     point3 _origin = point3(0.0, 0.0, -1.0);
     point3 _lookAt = point3(0.0, 0.0, 0.0);
-    vec3   _vUp = vec3(0.0, 1.0, 0.0);
+    vec3<double>   _vUp = vec3<double>(0.0, 1.0, 0.0);
 
     void initialize(double aspectRatio = 1.0) 
     {
@@ -34,8 +34,8 @@ public:
 
     ray getRay(double s, double t) const 
     {
-        vec3 rd = lensRadius * randomInUnitDisk();
-        vec3 offset = u * rd.x() + v * rd.y();
+        vec3<double> rd = lensRadius * randomInUnitDisk<double>();
+        vec3<double> offset = u * rd.x() + v * rd.y();
 
         return ray(origin + offset, lowerLeftCorner + s * horizontal + t * vertical - origin - offset);
     }
@@ -44,7 +44,7 @@ private:
     double lensRadius;
     point3 origin;
     point3 lowerLeftCorner;
-    vec3 horizontal;
-    vec3 vertical;
-    vec3 u, v, w;
+    vec3<double> horizontal;
+    vec3<double> vertical;
+    vec3<double> u, v, w;
 };

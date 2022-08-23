@@ -21,7 +21,7 @@ public:
 
     bool scatter(const ray& rIn, const hitRecord& rec, color& attenuation, ray& scattered) const override
     {
-        auto scatterDirection = rec.normal + randomUnitVector();
+        auto scatterDirection = rec.normal + randomUnitVector<double>();
 
         // Catch degenerate scatter direction
         if (scatterDirection.nearZero()) scatterDirection = rec.normal;
@@ -43,10 +43,10 @@ public:
 
     bool scatter(const ray& rIn, const hitRecord& rec, color& attenuation, ray& scattered) const override
     {
-        vec3 reflected = reflect(unitVector(rIn.getDirection()), rec.normal);
-        scattered = ray(rec.p, reflected + fuzz * randomInUnitSphere());
+        vec3<double> reflected = reflect<double>(unitVector<double>(rIn.getDirection()), rec.normal);
+        scattered = ray(rec.p, reflected + fuzz * randomInUnitSphere<double>());
         attenuation = albedo;
-        return (dot(scattered.getDirection(), rec.normal) > 0.0);
+        return (dot<double>(scattered.getDirection(), rec.normal) > 0.0);
     }
 };
 
@@ -63,14 +63,14 @@ public:
         attenuation = color(1.0, 1.0, 1.0);
         double refractionRatio = rec.frontFace ? (1.0 / refractionIndex) : refractionIndex;
 
-        vec3 unitDirection = unitVector(rIn.getDirection());
+        vec3<double> unitDirection = unitVector<double>(rIn.getDirection());
         double cosTheta = fmin(dot(-unitDirection, rec.normal), 1.0);
         double sinTheta = sqrt(1.0 - cosTheta * cosTheta);
 
         bool cannotRefract = refractionRatio * sinTheta > 1.0;
-        vec3 direction;
+        vec3<double> direction;
 
-        if (cannotRefract || reflectance(cosTheta, refractionRatio) > randomDouble())
+        if (cannotRefract || reflectance(cosTheta, refractionRatio) > randomNumber<double>())
             direction = reflect(unitDirection, rec.normal);
         else
             direction = refract(unitDirection, rec.normal, refractionRatio);

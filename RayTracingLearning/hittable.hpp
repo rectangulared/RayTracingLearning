@@ -13,11 +13,11 @@ public:
     std::shared_ptr<material> mat;
 
     point3 p;
-    vec3 normal;
+    vec3<double> normal;
 
-    void setFaceNormal(const ray& r, const vec3& outwardNormal) 
+    void setFaceNormal(const ray& r, const vec3<double>& outwardNormal)
     {
-        frontFace = dot(r.getDirection(), outwardNormal) < 0.0;
+        frontFace = dot<double>(r.getDirection(), outwardNormal) < 0.0;
         normal = frontFace ? outwardNormal : -outwardNormal;
     }
 };

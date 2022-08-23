@@ -2,7 +2,8 @@
 
 #include "hittable.hpp"
 
-class sphere : public hittable {
+class sphere : public hittable 
+{
 
 public:
     double radius;
@@ -13,9 +14,9 @@ public:
 
     bool hit(const ray& r, interval rayT, hitRecord& rec) const override 
     {
-        vec3 oc = r.getOrigin() - center;
+        vec3<double> oc = r.getOrigin() - center;
         auto a = r.getDirection().squaredLength();
-        auto halfB = dot(oc, r.getDirection());
+        auto halfB = dot<double>(oc, r.getDirection());
         auto c = oc.squaredLength() - radius * radius;
 
         auto discriminant = halfB * halfB - a * c;
@@ -33,7 +34,7 @@ public:
 
         rec.t = root;
         rec.p = r.at(rec.t);
-        vec3 outwardNormal = (rec.p - center) / radius;
+        vec3<double> outwardNormal = (rec.p - center) / radius;
         rec.setFaceNormal(r, outwardNormal);
         rec.mat = mat;
 

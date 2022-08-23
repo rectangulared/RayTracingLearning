@@ -9,7 +9,8 @@
 #include <ppl.h>
 
 
-class scene {
+class scene 
+{
 
 public:
     camera cam;
@@ -36,8 +37,8 @@ public:
                 color pixelColor(0.0, 0.0, 0.0);
                 for (int sample = 0; sample < samplesPerPixel; ++sample) 
                 {
-                    auto u = (j + randomDouble()) / (imageWidth - 1);
-                    auto v = (i + randomDouble()) / (imageHeight - 1);
+                    auto u = (j + randomNumber<double>()) / (imageWidth - 1);
+                    auto v = (i + randomNumber<double>()) / (imageHeight - 1);
                     ray r = cam.getRay(u, v);
                     pixelColor += rayColor(r, maxDepth);
                 }
@@ -49,7 +50,8 @@ public:
 
 private:
 
-    color rayColor(const ray& r, int depth) {
+    color rayColor(const ray& r, int depth) 
+    {
         hitRecord rec;
 
         if (depth <= 0) return color(0.0, 0.0, 0.0);
@@ -63,7 +65,7 @@ private:
             return color(0.0, 0.0, 0.0);
         }
 
-        vec3 unitDirection = unitVector(r.getDirection());
+        vec3<double> unitDirection = unitVector(r.getDirection());
         auto t = 0.5 * (unitDirection.y() + 1.0);
         return (1.0 - t) * color(1.0, 1.0, 1.0) + t * color(0.5, 0.7, 1.0);
     }
