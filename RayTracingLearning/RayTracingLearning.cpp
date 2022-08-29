@@ -11,9 +11,9 @@
 
 void randomSpheres(scene& randScene) 
 {
-    randScene.imageWidth = 1200;
+    randScene.imageWidth = 640;
     randScene.aspectRatio = 16.0 / 9.0;
-    randScene.samplesPerPixel = 100;
+    randScene.samplesPerPixel = 8;
 
     randScene.cam.vFOV = 20;
     randScene.cam.focusDist = 10.0;

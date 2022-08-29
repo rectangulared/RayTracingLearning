@@ -16,8 +16,8 @@ public:
     camera cam;
     hittableList world;
 
-    int    imageWidth = 1200;
-    int    samplesPerPixel = 100;
+    int    imageWidth = 640;
+    int    samplesPerPixel = 12;
     int    maxDepth = 20;
     double aspectRatio = 1.0;
 

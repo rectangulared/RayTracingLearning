@@ -15,8 +15,9 @@ public:
     bool hit(const ray& r, interval rayT, hitRecord& rec) const override 
     {
         vec3<double> oc = r.getOrigin() - center;
-        auto a = r.getDirection().squaredLength();
-        auto halfB = dot<double>(oc, r.getDirection());
+        vec3<double> tempDirection = r.getDirection();
+        auto a = tempDirection.squaredLength();
+        auto halfB = dot<double>(oc, tempDirection);
         auto c = oc.squaredLength() - radius * radius;
 
         auto discriminant = halfB * halfB - a * c;
@@ -35,7 +36,7 @@ public:
         rec.t = root;
         rec.p = r.at(rec.t);
         vec3<double> outwardNormal = (rec.p - center) / radius;
-        rec.setFaceNormal(r, outwardNormal);
+        rec.setFaceNormal(tempDirection, outwardNormal);
         rec.mat = mat;
 
         return true;

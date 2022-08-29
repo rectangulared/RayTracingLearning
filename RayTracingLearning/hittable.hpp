@@ -15,9 +15,9 @@ public:
     point3 p;
     vec3<double> normal;
 
-    void setFaceNormal(const ray& r, const vec3<double>& outwardNormal)
+    void setFaceNormal(const vec3<double>& rDirection, const vec3<double>& outwardNormal)
     {
-        frontFace = dot<double>(r.getDirection(), outwardNormal) < 0.0;
+        frontFace = dot<double>(rDirection, outwardNormal) < 0.0;
         normal = frontFace ? outwardNormal : -outwardNormal;
     }
 };

@@ -217,7 +217,7 @@ vec3<T> refract(const vec3<T>& uv, const vec3<T>& n, double etaiOverEtat)
 template<typename T>
 vec3<T> unitVector(vec3<T> v)
 {
-	return v / v.length();
+	return v.length() > 0 ? (v / v.length()) : v;
 }
 
 using point3 = vec3<double>;
